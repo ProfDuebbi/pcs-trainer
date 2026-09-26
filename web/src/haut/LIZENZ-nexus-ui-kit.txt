@@ -1,0 +1,28 @@
+Nexus UI Kit · v1.0 — die Gestaltungsebene dieser Oberflaeche
+Copyright (C) 2026 ProfDuebbi
+
+
+DIESE KOPIE
+
+`nexus.css` ist eine unveraenderte Kopie des Nexus UI Kit. Das Kit ist ein
+eigenes Werk desselben Urhebers, der auch diesen Trainer geschrieben hat —
+die Verwendung hier erfolgt als Urheber am eigenen Werk.
+
+Die Datei enthaelt ausschliesslich Gestaltung: Farben, Typografie, Abstaende,
+Bausteine und Bewegungsregeln. Kein Projektcode, keine Inhalte, keine Daten.
+
+Sie ist Zeile fuer Zeile unveraendert. Angepasst wird ausschliesslich in
+`trainer.css` daneben — so laesst sich eine neuere Fassung des Kits einfach
+darueberlegen, ohne die eigenen Anpassungen zu verlieren.
+
+Wer diesen Trainer weitergibt, laesst den Urhebervermerk im Kopf von
+`nexus.css` stehen und kennzeichnet Aenderungen am Kit als solche.
+
+
+SCHRIFTEN
+
+Die benutzten Schriften sind NICHT Teil des Kits:
+  Inter           - SIL Open Font License 1.1 - https://rsms.me/inter/
+  JetBrains Mono  - SIL Open Font License 1.1 - https://jetbrains.com/lp/mono/
+Beide sind frei nutzbar, es gelten ihre eigenen Lizenzen. Sie liegen hier
+lokal bei (@fontsource) — der Trainer laedt nichts aus dem Netz.

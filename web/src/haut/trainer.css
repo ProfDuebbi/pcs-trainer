@@ -1,0 +1,329 @@
+/* Anpassungen für den Trainer.
+   `nexus.css` daneben bleibt unverändert — was hier steht, legt sich darüber.
+   So lässt sich eine neuere Fassung des Kits einfach austauschen. */
+
+:root {
+  /* Polizeiblau statt des Violett aus dem Kit. Die beiden Begleiter bleiben nah
+     beieinander, damit der Verlauf ruhig wirkt — ein Werkzeug soll nicht leuchten. */
+  --nx-accent: #3b82f6;
+  --nx-accent-2: #22d3ee;
+  --nx-accent-3: #4f7dff;
+}
+
+html,
+body {
+  margin: 0;
+  background: #0e0f13;
+}
+
+/* Der Inhalt sitzt im Kit-Baustein `.nx-wrap`: eine zentrierte Spalte, die den
+   Abstand zwischen den Abschnitten selbst setzt. Das Polster kommt schon von
+   `.nx-content`, deshalb hier keins — sonst steht alles doppelt eingerueckt. */
+.nx-content > .nx-wrap {
+  padding: 0;
+  gap: 1.3rem;
+}
+
+/* --- Kopfzeile --------------------------------------------------------- */
+
+.tr-marke {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--grad);
+  color: #fff;
+}
+.tr-untertitel {
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--line);
+}
+.tr-standwahl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.tr-standwahl .nx-select {
+  min-width: 17rem;
+}
+
+/* --- Hinweise ---------------------------------------------------------- */
+
+.tr-warnung,
+.tr-meldung {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+.tr-warnung svg {
+  flex: none;
+  margin-top: 0.15rem;
+}
+.tr-meldung {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Seitenkopf -------------------------------------------------------- */
+
+/* Das Kit stellt Titel und Beiztext nebeneinander. Bei einer Seitenueberschrift
+   soll der Text darunter stehen, nicht rechts daneben. */
+.tr-sechead {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+.tr-sechead h2 {
+  font-size: 1.5rem;
+}
+.tr-sechead .nx-panel-sub {
+  text-align: left;
+  max-width: 70ch;
+}
+
+/* --- Felder ------------------------------------------------------------ */
+
+/* `.nx-panel` bringt Polster und Abstaende selbst mit — hier nur das Raster.
+   Die Obergrenze ist Absicht: ein Zahlenfeld, das eine halbe Bildschirmbreite
+   einnimmt, sieht aus wie ein Textfeld und laedt zum Falschlesen ein. */
+.tr-felder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 15rem));
+  gap: 1rem 1.1rem;
+}
+.tr-feld {
+  position: relative;
+}
+.tr-einheit {
+  color: var(--faint);
+  font-weight: 500;
+}
+/* Ein geändertes Feld trägt den Akzent an der Kante — kein zweiter Farbton,
+   keine zweite Bedeutung, die man erst lernen müsste. */
+.tr-feld-neu .nx-input {
+  border-color: var(--akzent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--akzent) 18%, transparent);
+}
+.tr-vorher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Eine schlichte Auswahl mit Beschriftung. `.nx-check` aus dem Kit ist etwas
+   anderes: ein durchsichtiger Haken, der ueber einer Bildkachel liegt. */
+.tr-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+.tr-check input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--akzent);
+  cursor: pointer;
+}
+
+/* Das Kit stellt Kennzahlen zu zweit nebeneinander; hier sind es drei
+   gleichrangige, die in eine Zeile gehoeren. */
+.tr-kpis {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 860px) {
+  .tr-kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Tabellen ---------------------------------------------------------- */
+
+.tr-stufe {
+  width: 6rem;
+  padding: 0.35rem 0.5rem;
+  text-align: right;
+}
+.tr-zeile-neu > td {
+  background: color-mix(in srgb, var(--akzent) 9%, transparent);
+}
+.tr-personal .tr-stufe {
+  width: 4.6rem;
+}
+.tr-personal .nx-meta {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* --- Roh-Ansicht ------------------------------------------------------- */
+
+.tr-roh {
+  display: grid;
+  grid-template-columns: minmax(15rem, 20rem) 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+.tr-roh-liste {
+  position: sticky;
+  top: 1rem;
+  padding: 0.8rem;
+  max-height: calc(100dvh - 11rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+/* Eine eigene Liste. Das Kit hat zwar `.nx-list`, aber die bringt Rahmen,
+   Flaeche und ein festes Spaltenraster mit — hier soll sie nur scrollen. */
+.tr-bloecke {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  margin: 0 -0.35rem;
+  padding: 0 0.35rem;
+}
+.tr-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.42rem 0.55rem;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s var(--ease), color 0.16s var(--ease);
+}
+.tr-block:hover {
+  background: var(--elev);
+  color: var(--text);
+}
+.tr-block-an,
+.tr-block-an:hover {
+  background: var(--elev2);
+  color: var(--text);
+  box-shadow: inset 2px 0 0 var(--akzent);
+}
+.tr-block-mass {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: none;
+  font-size: 0.7rem;
+  color: var(--faint);
+}
+/* Der Punkt sagt „hier liegt eine noch nicht geschriebene Aenderung". */
+.tr-punkt {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--akzent);
+}
+.tr-roh-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tr-roh-text {
+  min-height: 26rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  /* JSON bricht nicht um: eine lange Zeile bleibt eine Zeile und bekommt
+     einen Schieber, sonst verliert die Einrueckung jede Aussage. */
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+  tab-size: 2;
+  resize: vertical;
+}
+.tr-roh-editor .nx-meta {
+  display: block;
+  line-height: 1.5;
+}
+
+/* --- Speicherleiste ---------------------------------------------------- */
+
+/* Sie erscheint nur, wenn es etwas zu speichern gibt, und liegt über allem —
+   sonst sucht man den Knopf am Ende einer langen Tabelle. */
+.tr-leiste {
+  position: fixed;
+  left: 50%;
+  bottom: 1.4rem;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 0.7rem 0.8rem 0.7rem 1.2rem;
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--elev) 92%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  animation: tr-auf 220ms var(--ease);
+}
+.tr-leiste-acts {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@keyframes tr-auf {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 14px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-leiste {
+    animation: none;
+  }
+}
+
+/* --- Schmale Fenster --------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .tr-roh {
+    grid-template-columns: 1fr;
+  }
+  .tr-roh-liste {
+    position: static;
+    max-height: 22rem;
+  }
+  .tr-untertitel {
+    display: none;
+  }
+  .tr-standwahl .nx-select {
+    min-width: 0;
+  }
+  .tr-leiste {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    justify-content: space-between;
+  }
+  @keyframes tr-auf {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
